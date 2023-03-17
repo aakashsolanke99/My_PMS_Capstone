@@ -1,9 +1,7 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit  } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { ViewPrescriptionComponent } from '../view-prescription/view-prescription.component';
-
 
 export interface PatientDetails { 
   id: number,
@@ -13,6 +11,7 @@ export interface PatientDetails {
   remark: string
   
 }
+
 const ELEMENT_DATA: PatientDetails[] = [
   {
     id: 1,
@@ -58,30 +57,26 @@ const ELEMENT_DATA: PatientDetails[] = [
   }
 
 ];
+
 @Component({
-  selector: 'app-patient-info',
-  templateUrl: './patient-info.component.html',
-  styleUrls: ['./patient-info.component.scss']
+  selector: 'app-patienthistory',
+  templateUrl: './patienthistory.component.html',
+  styleUrls: ['./patienthistory.component.scss']
 })
-export class PatientInfoComponent implements AfterViewInit {
+export class PatienthistoryComponent{
   displayedColumns: string[] = ['id', 'testConducted', 'actualResult', 'status', 'remark'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
   constructor(private matDialog: MatDialog) {
-  
   }
-  @ViewChild(MatPaginator) paginator !: MatPaginator;
-  ngAfterViewInit(): void {
-     this.dataSource.paginator = this.paginator;
-  }
+  // @ViewChild(MatPaginator) paginator !: MatPaginator;
+  // ngAfterViewInit(): void {
+  //    this.dataSource.paginator = this.paginator;
+  // }
 
 
-  openDialog2() {
-    this.matDialog.open(ViewPrescriptionComponent), {
-      Width: '800px'
-      
-      
-
-    }
-
-  }
+  // openDialog2() {
+  //   // this.matDialog.open(ViewPrescriptionComponent), {
+  //   //   Width: '800px'
+  //   // }
+  // }
 }

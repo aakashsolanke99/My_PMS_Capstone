@@ -1,0 +1,167 @@
+{
+  "allergy": [
+    { "patient_id": 101, "allergy_name": "Aakash", "allergy_notes": 12 },
+    {
+      "patient_id": 102,
+      "allergy_name": "Aakash",
+      "allergy_notes": 12
+    },
+    {
+      "patient_id": 103,
+      "allergy_name": "Aakash",
+      "allergy_notes": 12
+    }
+  ],
+
+  "patient": [
+    {
+      "patient_id": 101,
+      "email": "Aakash@123",
+      "title": "asdf ",
+      "first_name": "AAKASH",
+      "last_name": "solanke",
+      "dob": "2-3-34",
+      "contact_number": "12354568",
+      "password": "aakash@123",
+      "gender": "M",
+      "address": "asdouqohdo  iuDU  UH ad"
+    },
+    {
+      "patient_id": 102,
+      "email": "swaraj@123",
+      "title": "asdf ",
+      "first_name": "swaraj",
+      "last_name": "solanke",
+      "dob": "2-3-3245",
+      "contact_number": "5473456",
+      "password": "swaraj@123",
+      "gender": "M",
+      "address": "DFGWEV  iuDU  UH ad"
+    },
+    {
+      "patient_id": 103,
+      "email": "amruta@123",
+      "title": "asdf ",
+      "first_name": "amruta",
+      "last_name": "solanke",
+      "dob": "2-3-4212",
+      "contact_number": "34566",
+      "password": "swarah@123",
+      "gender": "F",
+      "address": "CWRE  iuDU  UH ad"
+    },
+    {
+      "patient_id": 104,
+      "email": "veera@123",
+      "title": "asdf ",
+      "first_name": "veera",
+      "last_name": "solanke",
+      "dob": "2-3-wt",
+      "contact_number": "2345634556",
+      "password": "amruta@123",
+      "gender": "F",
+      "address": "CWTWHTRGRERSGET  iuDU  UH ad"
+    }
+  ],
+
+  "visit_details": [
+    {
+      "visit_id": 101,
+      "patient_id": "Aakash@123",
+      "height": "asdf ",
+      "height": "AAKASH",
+      "blood_pressure_systolic": "solanke",
+      "blood_pressure_diastolic": "2-3-34",
+      "body_temperature": "12354568",
+      "respiration_rate": "aakash@123",
+      "blood_group": "M",
+      "nurse_email": "asdouqohdo  iuDU  UH ad",
+      "physician_email": "asdasd@123",
+      "appointment_id": 2323,
+      "key_notes": "acqwrwxunt zqjwefx qhwdefx"
+    },
+    {
+      "visit_id": 101,
+      "patient_id": "Aakash@123",
+      "height": "asdf ",
+      "height": "AAKASH",
+      "blood_pressure_systolic": "solanke",
+      "blood_pressure_diastolic": "2-3-34",
+      "body_temperature": "12354568",
+      "respiration_rate": "aakash@123",
+      "blood_group": "M",
+      "nurse_email": "asdouqohdo  iuDU  UH ad",
+      "physician_email": "asdasd@123",
+      "appointment_id": 2323,
+      "key_notes": "acqwrwxunt zqjwefx qhwdefx"
+    }
+  ],
+
+  "test": [
+    {
+      "test_id": 123,
+      "test_name": "paragaon",
+      "result": "not updated",
+      "test_notes": "kjdfa agd  kjdf ",
+      "visit_id": 4356
+    },
+    {
+      "test_id": 123,
+      "test_name": "sdfg",
+      "result": "not updated",
+      "test_notes": "kjdfa wert  kjdf ",
+      "visit_id": 4356
+    },
+    {
+      "test_id": 123,
+      "test_name": "scg",
+      "result": "not updated",
+      "test_notes": "kjdfa agd  kjdf ",
+      "visit_id": 4356
+    },
+    {
+      "test_id": 123,
+      "test_name": "cfg",
+      "result": "not cfg",
+      "test_notes": "kjdfa agd  kjdf ",
+      "visit_id": 4356
+    },
+    {
+      "test_id": 134,
+      "test_name": "cfg",
+      "result": "not cfg",
+      "test_notes": "kjdfa agd  kjdf ",
+      "visit_id": 4356
+    },
+    {
+      "test_id": 15,
+      "test_name": "cfg",
+      "result": "not cfg",
+      "test_notes": "kjdfa agd  kjdf ",
+      "visit_id": 4356
+    }
+  ],
+  "prescription": [
+    {
+      "prescription_id": 123,
+      "prescription_name": "paracetamol",
+      "dosage": "1-2-1",
+      "prescription_notes": "need too atke rest",
+      "visit_id": "1234"
+    },
+    {
+      "prescription_id": 123,
+      "prescription_name": "doja",
+      "dosage": "1-2-1",
+      "prescription_notes": "need too atke rest",
+      "visit_id": "1234"
+    },
+    {
+      "prescription_id": 123,
+      "prescription_name": "hasg",
+      "dosage": "1-2-1",
+      "prescription_notes": "need too atke rest",
+      "visit_id": "1234"
+    }
+  ]
+}

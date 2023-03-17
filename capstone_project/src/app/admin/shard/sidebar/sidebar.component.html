@@ -15,8 +15,8 @@
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR67CK2JdmRsOEuDYJooISW3e1iKqh2pSEOMg&usqp=CAU"
       alt="doctor avatar"
     />
-    <h4 class="name">Admin</h4>
-    <p class="mail">admin@gmainl.com</p>
+    <h4 class="name">Dr. Admin</h4>
+    <p class="mail">admin@gmail.com</p>
   </div>
   <div class="menu">
     <div class="menu-head">
@@ -27,9 +27,13 @@
         <mat-icon>dashboard</mat-icon>
         <span>Home</span>
       </button>
-      <button mat-button class="menu-button" [routerLink]="['/prescription']">
-        <mat-icon>message</mat-icon>
-        <span>Post</span>
+      <button
+        mat-button
+        class="menu-button"
+        [routerLink]="['/pending-appointment']"
+      >
+        <mat-icon>timelapse</mat-icon>
+        <span>Pending</span>
       </button>
       <button mat-button class="menu-button" [routerLink]="['/comments']">
         <mat-icon>comment</mat-icon>

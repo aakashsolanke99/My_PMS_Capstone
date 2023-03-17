@@ -1,7 +1,8 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Injectable } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface PeriodicElement {
   position: number;
@@ -9,125 +10,139 @@ export interface PeriodicElement {
   bookedOn: string;
   notes: string;
   diagonosis: string;
-  action: string;
+  action1: string;
+  action2: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     position: 1,
     name: 'M.J. Mical',
-    bookedOn: '09:30 AM',
+    bookedOn: '11-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Health Checkup',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 2,
     name: 'Sanath Deo',
-    bookedOn: '12:30 Pm',
+    bookedOn: '15-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Health Checkup',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 3,
     name: 'Loera Phanj',
-    bookedOn: '03:30 PM',
+    bookedOn: '13-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Report',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 4,
     name: 'Komola Haris',
-    bookedOn: '06:30 PM',
+    bookedOn: '14-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Common COld',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 5,
     name: 'M.J. Mical',
-    bookedOn: '09:30 AM',
+    bookedOn: '22-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Health Checkup',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 6,
     name: 'Sanath Deo',
-    bookedOn: '12:30 Pm',
+    bookedOn: '13-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Health Checkup',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 7,
     name: 'Loera Phanj',
-    bookedOn: '03:30 PM',
+    bookedOn: '23-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Report',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 8,
     name: 'Komola Haris',
-    bookedOn: '06:30 PM',
+    bookedOn: '19-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Common COld',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 9,
     name: 'M.J. Mical',
-    bookedOn: '09:30 AM',
+    bookedOn: '20-02-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Health Checkup',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 10,
     name: 'Sanath Deo',
-    bookedOn: '12:30 Pm',
+    bookedOn: '14-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Health Checkup',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 11,
     name: 'Loera Phanj',
-    bookedOn: '03:30 PM',
+    bookedOn: '11-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Report',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
   {
     position: 12,
     name: 'Komola Haris',
-    bookedOn: '06:30 PM',
+    bookedOn: '22-03-2022',
     notes:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint reprehenderit aspernatur minus. Error dicta accusamus sit! Accusantium vero molestiae temporibus!',
     diagonosis: 'Common COld',
-    action: 'Update',
+    action1: 'Accept',
+    action2: 'Reject',
   },
 ];
+
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-pendingappointment',
+  templateUrl: './pendingappointment.component.html',
+  styleUrls: ['./pendingappointment.component.scss'],
 })
-export class DashboardComponent implements AfterViewInit {
+export class PendingappointmentComponent implements AfterViewInit {
   displayedColumns: string[] = [
     'position',
     'name',
@@ -141,12 +156,21 @@ export class DashboardComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
-    // this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
-  applyFilter(event: Event){
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  // durationInSecond = 5;
+  constructor(private snakBar: MatSnackBar) {}
+  openAcceptSnackbar(message: string, action: string) {
+    let snakBarRef = this.snakBar.open(message, action, { duration: 3000 });
+    snakBarRef.afterDismissed().subscribe();
+
+    snakBarRef.onAction().subscribe();
+  }
+  openrejectSnackbar(message: string, action: string) {
+    let snakBarRef = this.snakBar.open(message, action, { duration: 3000 });
+    snakBarRef.afterDismissed().subscribe();
+
+    snakBarRef.onAction().subscribe();
   }
 }

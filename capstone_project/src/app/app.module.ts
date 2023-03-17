@@ -13,13 +13,16 @@ import { CommentsComponent } from './admin/dashboard/comments/comments.component
 import { PagesComponent } from './admin/dashboard/pages/pages.component';
 import { SettingsComponent } from './admin/dashboard/settings/settings.component';
 import { CalendarComponent } from './admin/dashboard/calendar/calendar.component';
-import { PrescriptionComponent } from './admin/dashboard/prescription/prescription.component';
-import { AddPrescriptionDetailsComponent } from './admin/dashboard/add-prescription-details/add-prescription-details.component';
-import { ViewPrescriptionComponent } from './admin/dashboard/view-prescription/view-prescription.component';
-import { PatientInfoComponent } from './admin/dashboard/patient-info/patient-info.component';
-import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
-
-
+import { PendingappointmentComponent } from './admin/dashboard/pendingappointment/pendingappointment.component';
+import { UpdatepatientComponent } from './admin/dashboard/updatepatient/updatepatient.component';
+import { EnterprescriptionComponent } from './admin/dashboard/enterprescription/enterprescription.component';
+import { ViewprescriptionComponent } from './admin/dashboard/viewprescription/viewprescription.component';
+import { NewobservationComponent } from './admin/dashboard/newobservation/newobservation.component';
+import { EditobservationComponent } from './admin/dashboard/editobservation/editobservation.component';
+import { DeleteobservationComponent } from './admin/dashboard/deleteobservation/deleteobservation.component';
+import { ViewpatienthistoryComponent } from './admin/dashboard/viewpatienthistory/viewpatienthistory.component';
+import { HttpClientModule} from '@angular/common/http';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,20 +34,27 @@ import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
     PagesComponent,
     SettingsComponent,
     CalendarComponent,
-    PrescriptionComponent,
-    AddPrescriptionDetailsComponent,
-    ViewPrescriptionComponent,
-    PatientInfoComponent,
-   
+    PendingappointmentComponent,
+    UpdatepatientComponent,
+    EnterprescriptionComponent,
+    ViewprescriptionComponent,
+    NewobservationComponent,
+    EditobservationComponent,
+    DeleteobservationComponent,
+    ViewpatienthistoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AppModuleModule,
-    CalendarModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+    
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

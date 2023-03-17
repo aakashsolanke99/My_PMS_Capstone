@@ -1,14 +1,24 @@
+$navbarbgcolor: #32a7f1;
+$textcolor: #111111;
+$whitesmoke: whitesmoke;
+$textcolorhover: #2c3344;
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Materia+Icons");
+
+//google font imort for text
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 * {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Roboto", sans-serif;
   box-sizing: border-box;
   text-decoration: none;
 }
 mat-icon {
-  color: #8997ac;
+  color: $textcolor;
   font-family: "material Icons";
   vertical-align: middle;
+  cursor: pointer;
 }
 .navbar {
   .top {
@@ -28,17 +38,17 @@ mat-icon {
       border-radius: 50%;
     }
     .name {
-      color: black;
+      color: $textcolor;
     }
     .mail {
       margin-top: -10px;
-      color: #697d95;
+      color: $textcolorhover;
     }
   }
 }
 .menu {
   .menu-head {
-    color: navbarbgcolor;
+    color: $navbarbgcolor;
     text-transform: uppercase;
     font-weight: 900;
     margin-left: 40px;
@@ -54,13 +64,14 @@ mat-icon {
       padding-left: 40px;
       margin-bottom: 10px;
       span {
-        color: black;
+        color: $textcolor;
+        font-weight: 600;
       }
       &:hover {
-        background-color: #2c3344;
+        background-color: $whitesmoke;
       }
       &:focus {
-        background-color: #2c3344;
+        background-color: $whitesmoke;
       }
     }
   }

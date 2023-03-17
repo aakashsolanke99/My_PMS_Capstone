@@ -5,29 +5,28 @@
   <mat-sidenav-content>
     <div class="content">
       <div class="toolbar">
-        <mat-toolbar>
+        <mat-toolbar class="toolbarsticky">
           <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
           <div class="box">
-            <mat-icon class="box-item" matTooltip="Search">search</mat-icon>
-            <mat-icon class="box-item" matTooltip="Calendar"
+            <mat-icon
+              class="box-item"
+              matTooltip="Calendar"
+              routerLink="/calendar"
               >event_note</mat-icon
             >
-            <div
-              matBadge="2"
-              style="position: absolute; margin-top: -36px; margin-left: -36px"
-            >
+            <div class="box-badge" matBadge="2">
               <mat-icon class="box-item" matTooltip="Email"
                 >mail_outline</mat-icon
               >
             </div>
-            <!-- <mat-icon class="box-item" matTooltip="Logout">logout</mat-icon> -->
             <button
               mat-icon-button
               [matMenuTriggerFor]="menu"
               aria-label="Example icon-button with a menu"
               matTooltip="Menu"
+              class="box-btn"
             >
-              <mat-icon style="margin-left: 0">more_vert</mat-icon>
+              <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item>

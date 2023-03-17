@@ -1,3 +1,4 @@
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,11 +15,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 // import {MatDatepickerModule} from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
+
 import {MatDialogModule} from '@angular/material/dialog';
 
-const modules = [MatDialogModule,MatPaginatorModule,MatIconModule, MatToolbarModule, MatButtonModule, MatSidenavModule,MatListModule, MatCardModule, MatSelectModule, MatBadgeModule, MatTooltipModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatMenuModule, ]
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
+
+const modules = [MatIconModule, MatToolbarModule, MatButtonModule, MatSidenavModule,MatListModule, MatCardModule, MatSelectModule, MatBadgeModule, MatTooltipModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatDialogModule, MatSnackBarModule]
 @NgModule({
   declarations: [],
   imports: [

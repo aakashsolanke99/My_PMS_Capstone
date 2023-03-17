@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-calendar',
@@ -6,8 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent {
-public minDate: Date = new Date ("05/07/2017");
-    public maxDate: Date = new Date ("08/27/2017");
-    public value: Date = new Date ("05/16/2017");
-    constructor () {}
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
 }
