@@ -138,6 +138,7 @@ export class DashboardComponent implements AfterViewInit {
   ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {

@@ -3,33 +3,29 @@
 </button>
 <p>All medicines are available at our pharmacy</p>
 <mat-dialog-content>
-  <form
-    [formGroup]="prescriptionForm"
-    (ngSubmit)="savePrescription()"
-    class="form-field"
-  >
+  <form (ngSubmit)="onSubmit()" class="form-field">
     <input
       type="text"
-      id="medicine"
+      name="medicine"
       placeholder="medicine/Drug Name*"
       class="input-style"
-      ngModel
+      [(ngModel)]="prescription.prescriptionName"
     />
     <input
       type="text"
-      id="dosage"
+      name="dosage"
       placeholder="Dosage*"
       class="input-style"
-      ngModel
+      [(ngModel)]="prescription.dosage"
     />
     <input
       type="text"
-      id="notes"
+      name="notes"
       placeholder="Notes"
       class="input-style"
-      ngModel
+      [(ngModel)]="prescription.prescriptionNotes"
     />
-    <button type="submit">submit</button>
+    <button type="submit" id="addPrescriptionForm">submit</button>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions matDialogClose>

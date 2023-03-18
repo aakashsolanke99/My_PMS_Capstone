@@ -1,35 +1,52 @@
-import { FormGroup,ReactiveFormsModule,FormBuilder,Validator } from '@angular/forms';
-import { Component } from '@angular/core';
+import { FormGroup,ReactiveFormsModule,FormBuilder,Validator, NgForm } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { HttpClient } from '@angular/common/http';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+export class Prescription{
+
+  prescriptionName: any;
+  dosage: any;
+  prescriptionNotes: any;
+  visitId: any;
+}
 
 @Component({
   selector: 'app-enterprescription',
   templateUrl: './enterprescription.component.html',
   styleUrls: ['./enterprescription.component.scss']
 })
-export class EnterprescriptionComponent {
-
-  constructor(private matDialog: MatDialog ,private service:RestapiService,private http:HttpClient,private builder:FormBuilder) { }
-
+export class EnterprescriptionComponent implements OnInit{
   
-  prescription: any = {};
-  onSubmit() {
-    this.service.enterePrescriptionFormData(this.prescription).
-      subscribe(
-        response => console.log(response),
-        error => console.log(error)
-        
-    );
-    console.log(this.prescription);
+  constructor(private matDialog: MatDialog ,private service:RestapiService,private http:HttpClient) { }
+  ngOnInit(): void {
+    
   }
 
-  prescriptionForm = this.builder.group({
+
+  prescription: Prescription = new Prescription();
+  visitId = this.service.getvisitid();
+  
+
+
+  
+  savePrescription() {
+    this.service.addPrescription(this.prescription,this.visitId).subscribe(data => {
+      console.log("visitID",this.visitId);
+    },
     
+      error => console.log(error)
+    );
+      
+  }
+  onSubmit() {
+    console.log(this.prescription);
     
-  })
+    this.savePrescription();
+  }
+
 
 
    openDialogEnterPrescription() {

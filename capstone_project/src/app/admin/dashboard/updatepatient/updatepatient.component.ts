@@ -17,6 +17,7 @@ export interface PeriodicElement {
   testName: string;
   result: string;
   testNotes: string;
+  visitId: number;
   // remarks: string;
   action1: string;
   action2: string;
@@ -33,11 +34,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./updatepatient.component.scss'],
 })
 export class UpdatepatientComponent implements AfterViewInit , OnInit {
-
+  visitid: any;
   ngOnInit(): void {
     this.getallTest();
     this.getallPatient();
     this.getPatientbyId();
+    
     
   }
   displayedColumns: string[] = [
@@ -62,10 +64,18 @@ export class UpdatepatientComponent implements AfterViewInit , OnInit {
   getallTest() {
     this.service.getallTest().subscribe(response => {
       this.testdata = response;
-      console.log(this.testdata);
+      
+      this.visitid = this.testdata[0].visitId;
+      this.service.setvisitid(this.visitid);
+      
+      console.log(this.visitid);
     })
   
-}
+  }
+
+  
+  
+
   
   patientdata:any
   getallPatient() {
@@ -109,6 +119,7 @@ export class UpdatepatientComponent implements AfterViewInit , OnInit {
   }
 
   openDialogEnterPrescription() {
+   
     this.matDialog.open(EnterprescriptionComponent),
       {
         Width: '800px',
