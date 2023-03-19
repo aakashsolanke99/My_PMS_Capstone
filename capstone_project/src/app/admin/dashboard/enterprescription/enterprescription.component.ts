@@ -3,7 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { HttpClient } from '@angular/common/http';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 export class Prescription{
 
@@ -25,12 +25,8 @@ export class EnterprescriptionComponent implements OnInit{
     
   }
 
-
   prescription: Prescription = new Prescription();
   visitId = this.service.getvisitid();
-  
-
-
   
   savePrescription() {
     this.service.addPrescription(this.prescription,this.visitId).subscribe(data => {
@@ -43,7 +39,6 @@ export class EnterprescriptionComponent implements OnInit{
   }
   onSubmit() {
     console.log(this.prescription);
-    
     this.savePrescription();
   }
 

@@ -39,7 +39,7 @@ export class UpdatepatientComponent implements AfterViewInit , OnInit {
     this.getallTest();
     this.getallPatient();
     this.getPatientbyId();
-    
+    this.delettestbyid();
     
   }
   displayedColumns: string[] = [
@@ -73,10 +73,15 @@ export class UpdatepatientComponent implements AfterViewInit , OnInit {
   
   }
 
-  
-  
+  deletestbyiddata:any
+  delettestbyid() {
+    this.service.deletetest(52).subscribe(response => {
+      this.deletestbyiddata = response;
+      console.log("deleted")
+    })
+    
+  }
 
-  
   patientdata:any
   getallPatient() {
     this.service.getallPatient().subscribe(response => {

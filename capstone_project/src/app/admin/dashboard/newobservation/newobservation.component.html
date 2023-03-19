@@ -2,17 +2,32 @@
   <mat-icon>close</mat-icon>
 </button>
 <mat-dialog-content>
-  <form action="" class="form-field">
-    <input type="text" placeholder="Test Conducted*" class="input-style" />
+  <form (ngSubmit)="onSubmit()" class="form-field">
+    <input
+      type="text"
+      name="testName"
+      placeholder="Test Conducted*"
+      class="input-style"
+      [(ngModel)]="test.testName"
+    />
     <div class="internal-style">
       <input
         type="text"
+        name="result"
         placeholder="Actual Result*"
         class="internal-input-style mr"
+        [(ngModel)]="test.result"
       />
-      <input type="text" placeholder="Status*" class="internal-input-style" />
+      <input
+        type="text"
+        name="testNotes"
+        placeholder="Status*"
+        class="internal-input-style"
+        [(ngModel)]="test.testNotes"
+      />
     </div>
-    <input type="text" placeholder="Remarks" class="input-style" />
+
+    <button type="submit">save</button>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions matDialogClose>
