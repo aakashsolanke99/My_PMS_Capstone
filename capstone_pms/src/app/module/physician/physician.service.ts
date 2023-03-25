@@ -25,8 +25,14 @@ export class PhysicianService {
     );
   }
 
-  rejectAppointment(patientId: any) {
-    return this.http.delete(`http://localhost:8081/appointment/${patientId}`);
+  rejectAppointment(appointmentId: any, acceptance: string) {
+    return this.http.put(
+      'http://localhost:8081/rejectedappointments/' +
+        appointmentId +
+        '/' +
+        acceptance,
+      ''
+    );
   }
 
   //All pending appointments
@@ -37,18 +43,25 @@ export class PhysicianService {
   }
 
   //get all visit detials by patient id
-  getvisitdetailsbyid(patientId: any) {
+  getvisitdetailsbyid(appointmentId: any) {
     return this.http.get(
-      `http://localhost:8082/patient/health-records/${patientId}`
+      `http://localhost:8082/patient/health-records/${appointmentId}`
     );
   }
 
   //Get visit history details by id
-  getvisisthistorydetailsbyid(patientId: any) {
+  getAppointmentHistoryDetailsById(patientId: any) {
     return this.http.get(
       `http://localhost:8081/appointment/${patientId}/previous`
     );
   }
+
+  getPrevioushealthrecordsBypatientId(patientId: any) {
+    return this.http.get(
+      `http://localhost:8082/patient/Previous-health-records/${patientId}`
+    );
+  }
+
   getallTest() {
     return this.http.get('http://localhost:8082/tests');
   }
@@ -87,6 +100,15 @@ export class PhysicianService {
     return this.http.delete(`http://localhost:8082/tests/${testId}`);
   }
 
+  getPrevTests(visitId: any) {
+    return this.http.get(`http://localhost:8082/testByVisitId/${visitId}`);
+  }
+
+  //privious prescription in history component
+  getPreviousPrescriptionRecordsByVisitId(visitId: any) {
+    //localhost:8082/prescription/16
+    return this.http.get(`http://localhost:8082/prescription/${visitId}`);
+  }
   //accepted appointment
   acceptappointment(appointmentId: number, acceptance: String) {
     return this.http.put(
@@ -104,11 +126,12 @@ export class PhysicianService {
   }
 
   public oldvisitid: any;
-  public setOldVisitId(visitid: any) {
+  public setOldVisitId(visitid: number) {
     this.oldvisitid = visitid;
   }
 
   public getOldVisitId() {
+    console.log('ssssssssssssss', this.oldvisitid);
     return this.oldvisitid;
   }
 }

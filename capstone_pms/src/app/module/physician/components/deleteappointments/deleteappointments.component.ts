@@ -16,16 +16,19 @@ export class DeleteappointmentsComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
+  acceptance: string = 'Rejected';
   deletedata: any;
   appointmentid: any = sessionStorage.getItem('appointmentid');
   delete() {
-    this.service.rejectAppointment(this.appointmentid).subscribe((response) => {
-      this.deletedata = response;
-      console.log(
-        'this is patient id whose appointment delete',
-        this.appointmentid
-      );
-    });
+    this.service
+      .rejectAppointment(this.appointmentid, this.acceptance)
+      .subscribe((response) => {
+        this.deletedata = response;
+        console.log(
+          'this is patient id whose appointment delete',
+          this.appointmentid
+        );
+      });
   }
 
   openAcceptSnackbar(message: string, action: string) {

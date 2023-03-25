@@ -9,7 +9,7 @@
         >
       </p>
       <p>
-        <span>Age : {{ patientbyIdData.dateOfBirth }}</span>
+        <span>Age : {{ patientbyIdData.age }}</span>
       </p>
       <p>
         <span>Gender : {{ patientbyIdData.gender }}</span>
@@ -117,7 +117,7 @@
         <button
           mat-raised-button
           color="accent"
-          (click)="deleteidbyclick(element.testId)"
+          (click)="deleteTestbyIdClick(element.testId)"
           (click)="openDialogDeleteObservation()"
         >
           Delete

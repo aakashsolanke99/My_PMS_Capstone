@@ -11,17 +11,25 @@ public interface PatientHealthRecordService {
 	
 	public List<VisitDetails> findAll();
 	
-	public Optional<VisitDetails> findById(Integer visitId );
+	public VisitDetails findVisistDetailsByAppointmentId(Integer appointmentId );
 	
 	public VisitDetails update(VisitDetails visitDetails);
 	
+	public VisitDetails getPreviousVisitDetailsByPatientId(Integer patientId);
+	
 	public List<Prescription> findAllPrescription();
+
+	public List<Prescription> findPrescriptionById(Integer visitId);
 	
 	public Prescription savePrescription(Prescription prescription);
 
 	public List<Tests> findAllTesta();
 	
+	public List<Tests> findTestById(Integer visitId);
+	
 	public Tests saveTest(Tests test);
 	
 	public void deleteTest(Integer testId);
+	
+	public Tests updatForTest(Tests tests);
 }

@@ -36,8 +36,10 @@ export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getPatientbyId();
-    this.getallTest();
-    this.getvisithistorydetailsbyid();
+    // this.getAppointmentHistoryDetailsById();
+    // this.getPrevioushealthrecordsBypatientId();
+    // this.getAllTestByVisitId();
+
     throw new Error('Method not implemented.');
   }
 
@@ -51,33 +53,66 @@ export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
     });
   }
 
-  visitid: any;
+  // myvisitId: any;
+  // getPrevioushealthrecordsBypatientIdData: any;
+  // getPrevioushealthrecordsBypatientId() {
+  //   this.service
+  //     .getPrevioushealthrecordsBypatientId(this.patientid)
+  //     .subscribe((response) => {
+  //       this.getPrevioushealthrecordsBypatientIdData = response;
+  //       this.myvisitId = this.getPrevioushealthrecordsBypatientIdData.visitId;
+  //       this.service.setOldVisitId(this.myvisitId);
+  //       sessionStorage.setItem(
+  //         'abc',
+  //         this.getPrevioushealthrecordsBypatientIdData.visitId
+  //       );
+  //       // console.log(
+  //       //   '######',
+  //       //   this.getPrevioushealthrecordsBypatientIdData.visitId
+  //       // );
+  //       console.log(
+  //         '*****************',
+  //         this.getPrevioushealthrecordsBypatientIdData
+  //       );
+  //     });
+  // }
 
-  testdata: any;
-  getallTest() {
-    this.service.getallTest().subscribe((response) => {
-      this.testdata = response;
+  // oldtestdata: any;
+  // oldvisitid: any;
+  // getAllTestByVisitId() {
+  //   // this.oldvisitid = this.service.getOldVisitId();
+  //   this.oldvisitid = sessionStorage.getItem('abc');
+  //   this.service.getPrevTests(this.oldvisitid).subscribe((response) => {
+  //     this.oldtestdata = response;
+  //     console.log(this.oldtestdata);
+  //   });
+  // }
+  // testdata: any;
+  // abcd: any = sessionStorage.getItem('abc');
+  // getallTest() {
+  //   console.log('----------', this.abcd);
+  //   this.service.getPrevTests(this.abcd).subscribe((response) => {
+  //     this.testdata = response;
+  //     console.log(
+  //       '11111111111111111111',
+  //       this.getPrevioushealthrecordsBypatientIdData.visitId
+  //     );
+  //   });
+  // }
 
-      this.visitid = this.testdata[0].visitId;
-      this.service.setvisitid(this.visitid);
-      this.dataSource = new MatTableDataSource(this.testdata);
-      console.log('this is test data in history', this.visitid);
-    });
-  }
-
-  visistdetailsdata: any;
-  getvisithistorydetailsbyid() {
-    console.log(
-      'this is patient id in getvisitdetailsbyid for history',
-      this.patientid
-    );
-    this.service
-      .getvisisthistorydetailsbyid(this.patientid)
-      .subscribe((response) => {
-        this.visistdetailsdata = response;
-        console.log(this.visistdetailsdata);
-      });
-  }
+  // visistdetailsdata: any;
+  // getAppointmentHistoryDetailsById() {
+  //   console.log(
+  //     'this is patient id in getvisitdetailsbyid for history',
+  //     this.patientid
+  //   );
+  //   this.service
+  //     .getAppointmentHistoryDetailsById(this.patientid)
+  //     .subscribe((response) => {
+  //       this.visistdetailsdata = response;
+  //       console.log('asdfghjkl', this.visistdetailsdata);
+  //     });
+  // }
 
   openDialogViewPrescription() {
     this.matDialog.open(ViewprescriptionComponent),

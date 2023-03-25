@@ -31,14 +31,14 @@ const ELEMENT_DATA: PeriodicElement[] = [];
   styleUrls: ['./updatepatient.component.scss'],
 })
 export class UpdatepatientComponent implements OnInit {
-  visitid: any;
   ngOnInit(): void {
-    this.getallTest();
-    this.getallPatient();
+    // this.getallTest();
+    // this.getallPatient();
     this.getPatientbyId();
     // this.delettestbyid();
     this.getvisitdetailsbyid();
-    this.getvisithistorydetailsbyid();
+    this.getAppointmenthHistoryDetailsById();
+    this.getAllTestByVisitId();
   }
   displayedColumns: string[] = [
     'testId',
@@ -65,34 +65,34 @@ export class UpdatepatientComponent implements OnInit {
   viewprevioushistoryclick() {}
 
   dataSource: any;
-  testdata: any;
-  getallTest() {
-    this.service.getallTest().subscribe((response) => {
-      this.testdata = response;
 
-      this.visitid = this.testdata[0].visitId;
-      this.service.setvisitid(this.visitid);
-      this.dataSource = new MatTableDataSource(this.testdata);
-      this.dataSource.paginator = this.paginator;
-      console.log(this.visitid);
-    });
-  }
+  // getallTest() {
+  //   this.service.getallTest().subscribe((response) => {
+  //     this.testdata = response;
 
-  deleteidbyclick(teid: any) {
+  //     this.visitid = this.testdata[0].visitId;
+  //     this.service.setvisitid(this.visitid);
+
+  //     console.log(this.visitid);
+  //   });
+  // }
+
+  deleteTestbyIdClick(teid: any) {
     sessionStorage.setItem('visitid', teid);
   }
 
-  deletestbyiddata: any;
-  patientdata: any;
-  getallPatient() {
-    this.service.getallPatient().subscribe((response) => {
-      this.patientdata = response;
-      console.log(this.patientdata);
-    });
-  }
+  // deletestbyiddata: any;
+  // patientdata: any;
+  // getallPatient() {
+  //   this.service.getallPatient().subscribe((response) => {
+  //     this.patientdata = response;
+  //     console.log(this.patientdata);
+  //   });
+  // }
 
   patientid: any = sessionStorage.getItem('setid');
   patientbyIdData: any;
+  // patientId: any;
   getPatientbyId() {
     console.log('this is patient id in getPatientbyId ', this.patientid);
     this.service.getPatientbyId(this.patientid).subscribe((response) => {
@@ -101,30 +101,55 @@ export class UpdatepatientComponent implements OnInit {
     });
   }
 
-  // get visit detilas by patient id
+  // get visit detilas by apppointment id
+  appointmentId: any = sessionStorage.getItem('appointment_Id');
   visistdetailsdata: any;
   getvisitdetailsbyid() {
-    console.log('this is patient id in getvisitdetailsbyid', this.patientid);
+    console.log(
+      'this is patient id in getvisitdetailsbyid',
+      this.appointmentId
+    );
     this.service.getvisitdetailsbyid(this.patientid).subscribe((response) => {
       this.visistdetailsdata = response;
+      console.log(
+        'visit id in get visit details by id',
+        this.visistdetailsdata.visitId
+      );
+      sessionStorage.setItem('visitId', this.visistdetailsdata.visitId);
+      console.log(
+        'visit detials data by appointment id ',
+        this.visistdetailsdata
+      );
+    });
+  }
 
-      console.log('visit detials data', this.visistdetailsdata);
+  testdata: any;
+  visitid: any = sessionStorage.getItem('visitId');
+  getAllTestByVisitId() {
+    this.service.getPrevTests(this.visitid).subscribe((response) => {
+      this.testdata = response;
+      console.log('all test data in ', this.testdata);
+      this.dataSource = new MatTableDataSource(this.testdata);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   oldvisitid: any;
   visisthistorydetailsdata: any;
-  getvisithistorydetailsbyid() {
+  getAppointmenthHistoryDetailsById() {
     console.log(
       'this is patient id in getvisit history detailsby id for history',
       this.patientid
     );
 
     this.service
-      .getvisisthistorydetailsbyid(this.patientid)
+      .getAppointmentHistoryDetailsById(this.patientid)
       .subscribe((response) => {
         this.visisthistorydetailsdata = response;
-        console.log(this.visisthistorydetailsdata);
+        console.log(
+          'Appointment History Details By Id IN Update component',
+          this.visisthistorydetailsdata
+        );
       });
   }
   openDialogNewObservation() {

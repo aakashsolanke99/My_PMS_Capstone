@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="patientinfo")
+@Table(name="patient")
 public class Patient {
 	
 	@Id
@@ -28,8 +28,8 @@ public class Patient {
 	@Column(name="last_name")
 	private String LastName;
 	
-	@Column(name="dob")
-	private String dateOfBirth;
+	@Column(name="age")
+	private String age;
 	
 	@Column(name="contact_number")
 	private String contactNumber;
@@ -51,7 +51,7 @@ public class Patient {
 		this.title = title;
 		this.firstName = firstName;
 		LastName = lastName;
-		this.dateOfBirth = dateOfBirth;
+		this.age = dateOfBirth;
 		this.contactNumber = contactNumber;
 		this.password = password;
 		this.gender = gender;
@@ -103,12 +103,12 @@ public class Patient {
 		LastName = lastName;
 	}
 
-	public String getDateOfBirth() {
-		return dateOfBirth;
+	public String getAge() {
+		return age;
 	}
 
 	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.age = dateOfBirth;
 	}
 
 	public String getContactNumber() {
@@ -146,7 +146,7 @@ public class Patient {
 	@Override
 	public String toString() {
 		return "Patient [patientId=" + patientId + ", patientEmail=" + patientEmail + ", title=" + title
-				+ ", firstName=" + firstName + ", LastName=" + LastName + ", dateOfBirth=" + dateOfBirth
+				+ ", firstName=" + firstName + ", LastName=" + LastName + ", dateOfBirth=" + age
 				+ ", contactNumber=" + contactNumber + ", password=" + password + ", gender=" + gender + ", address="
 				+ address + "]";
 	}

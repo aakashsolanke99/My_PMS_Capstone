@@ -24,8 +24,8 @@ export class EnterprescriptionComponent implements OnInit {
   ngOnInit(): void {}
 
   prescription: Prescription = new Prescription();
-  visitId = this.service.getvisitid();
 
+  visitId = sessionStorage.getItem('visitId');
   savePrescription() {
     this.service.addPrescription(this.prescription, this.visitId).subscribe(
       (data) => {

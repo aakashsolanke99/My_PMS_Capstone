@@ -35,6 +35,8 @@ export class DashboardComponent implements OnInit {
   constructor(private service: PhysicianService, public datepipe: DatePipe) {}
   ngOnInit(): void {
     this.getTodaysAppointment();
+
+    this.getallPatient();
   }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -42,7 +44,7 @@ export class DashboardComponent implements OnInit {
   dataSource: any;
   todaysAppointment: any;
   transformdate: any;
-  email = 'p1@gmail.com';
+  email = 'physician1@gmail.com';
   status = 'acceptance=accepted';
   getTodaysAppointment() {
     var date = new Date();
@@ -59,15 +61,25 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  getpatientidbyclick(patientid: any) {
+  getpatientidbyclick(patientid: any, appointmentId: any) {
     sessionStorage.setItem('setid', patientid);
+    sessionStorage.setItem('appointment_Id', appointmentId);
   }
+
+  PatientId: any = sessionStorage.getItem('setid');
 
   // ngAfterViewInit() {
   //   // this.dataSource.sort = this.sort;
   //   this.dataSource.paginator = this.paginator;
   // }
 
+  patientdata: any;
+  getallPatient() {
+    this.service.getallPatient().subscribe((response) => {
+      this.patientdata = response;
+      console.log(this.patientdata);
+    });
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

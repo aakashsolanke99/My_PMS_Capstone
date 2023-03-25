@@ -35,10 +35,9 @@ export class ViewprescriptionComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
   dataSource: any;
-  visitId: any;
+  visitId: any = sessionStorage.getItem('visitId');
   prescriptiondata: any;
   getallPrescriptionbyvisitid() {
-    this.visitId = this.service.getvisitid();
     this.service
       .getallPrescriptionbyvisitiddata(this.visitId)
       .subscribe((response) => {

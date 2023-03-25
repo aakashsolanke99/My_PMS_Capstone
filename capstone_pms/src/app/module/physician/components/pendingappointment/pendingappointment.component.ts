@@ -55,7 +55,6 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
     'action',
   ];
 
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
@@ -69,6 +68,7 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
     private matDialog: MatDialog
   ) {}
 
+  dataSource: any;
   pendingAppointmnt: any;
   getPendingAppointments() {
     this.service
@@ -76,6 +76,8 @@ export class PendingappointmentComponent implements OnInit, AfterViewInit {
       .subscribe((response) => {
         this.pendingAppointmnt = response;
         console.log(this.pendingAppointmnt);
+        this.dataSource = new MatTableDataSource(this.pendingAppointmnt);
+        this.dataSource.paginator = this.paginator;
       });
   }
 

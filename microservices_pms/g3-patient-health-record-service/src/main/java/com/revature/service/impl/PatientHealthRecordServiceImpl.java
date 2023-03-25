@@ -35,9 +35,9 @@ public class PatientHealthRecordServiceImpl implements PatientHealthRecordServic
 	}
 
 	@Override
-	public Optional<VisitDetails> findById(Integer visitId) {
+	public VisitDetails findVisistDetailsByAppointmentId(Integer appointmentId) {
 		// TODO Auto-generated method stub
-		return visitDetailsRepo.findById(visitId);
+		return visitDetailsRepo.findVisitDetailsById(appointmentId);
 	}
 
 	@Override
@@ -76,6 +76,30 @@ public class PatientHealthRecordServiceImpl implements PatientHealthRecordServic
 	@Override
 	public void deleteTest(Integer testId) {
 		 testRepo.deleteById(testId); 
+	}
+
+	@Override
+	public Tests updatForTest(Tests tests) {
+		// TODO Auto-generated method stub
+		return testRepo.save(tests);
+	}
+
+	@Override
+	public List<Tests> findTestById(Integer visitId) {
+		// TODO Auto-generated method stub
+		return testRepo.getTestsById(visitId);
+	}
+
+	@Override
+	public List<Prescription> findPrescriptionById(Integer visitId ) {
+		// TODO Auto-generated method stub
+		return prescriptionRepos.prescriptionById(visitId);
+	}
+
+	@Override
+	public VisitDetails getPreviousVisitDetailsByPatientId(Integer patientId) {
+		// TODO Auto-generated method stub
+		return visitDetailsRepo.getVisitIdbyPatientid(patientId);
 	}
 
 }

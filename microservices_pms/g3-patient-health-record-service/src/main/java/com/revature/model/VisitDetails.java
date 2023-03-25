@@ -50,12 +50,20 @@ public class VisitDetails {
 	@Column(name="appointment_id")
 	private int appointmentId;
 	
-	@Column(name="key_notes")
+	@Column(name="key_notes_by_nurse")
 	private String keyNotes;
+	
+	@Column(name="diagnosis_by_doctor")
+	private String diagnosis;
+
+	public VisitDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public VisitDetails(int visitId, int patientId, float height, float weight, int bloodPressureSystolic,
 			int bloodPressureDiastolic, float bodyTemperature, float respirationRate, String bloodGroup,
-			String nurseEmail, String physicianEmail, int appointmentId, String keyNotes) {
+			String nurseEmail, String physicianEmail, int appointmentId, String keyNotes, String diagnosis) {
 		super();
 		this.visitId = visitId;
 		this.patientId = patientId;
@@ -70,11 +78,7 @@ public class VisitDetails {
 		this.physicianEmail = physicianEmail;
 		this.appointmentId = appointmentId;
 		this.keyNotes = keyNotes;
-	}
-
-	public VisitDetails() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.diagnosis = diagnosis;
 	}
 
 	public int getVisitId() {
@@ -181,15 +185,25 @@ public class VisitDetails {
 		this.keyNotes = keyNotes;
 	}
 
+	public String getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(String diagnosis) {
+		this.diagnosis = diagnosis;
+	}
+
 	@Override
 	public String toString() {
 		return "VisitDetails [visitId=" + visitId + ", patientId=" + patientId + ", height=" + height + ", weight="
 				+ weight + ", bloodPressureSystolic=" + bloodPressureSystolic + ", bloodPressureDiastolic="
 				+ bloodPressureDiastolic + ", bodyTemperature=" + bodyTemperature + ", respirationRate="
 				+ respirationRate + ", bloodGroup=" + bloodGroup + ", nurseEmail=" + nurseEmail + ", physicianEmail="
-				+ physicianEmail + ", appointmentId=" + appointmentId + ", keyNotes=" + keyNotes + "]";
+				+ physicianEmail + ", appointmentId=" + appointmentId + ", keyNotes=" + keyNotes + ", diagnosis="
+				+ diagnosis + "]";
 	}
 
+	
 	
 	
 }
