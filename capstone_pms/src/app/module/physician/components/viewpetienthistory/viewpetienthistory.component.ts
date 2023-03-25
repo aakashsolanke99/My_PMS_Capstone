@@ -36,6 +36,9 @@ export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getPatientbyId();
+    this.getAppointmenthHistoryDetailsById();
+    this.previousVisitDetailsById();
+    this.getPreviousTestData();
     // this.getAppointmentHistoryDetailsById();
     // this.getPrevioushealthrecordsBypatientId();
     // this.getAllTestByVisitId();
@@ -53,6 +56,48 @@ export class ViewpetienthistoryComponent implements OnInit, AfterViewInit {
     });
   }
 
+  visisthistorydetailsdata: any;
+  getAppointmenthHistoryDetailsById() {
+    console.log(
+      'this is patient id in getvisit history detailsby id for history',
+      this.patientid
+    );
+
+    this.service
+      .getAppointmentHistoryDetailsById(this.patientid)
+      .subscribe((response) => {
+        this.visisthistorydetailsdata = response;
+        console.log(
+          'Appointment History Details By Id IN Update component',
+          this.visisthistorydetailsdata
+        );
+      });
+  }
+
+  visitId: any;
+  previousVisitData: any;
+  previousVisitDetailsById() {
+    this.service
+      .getPreviousVisistRecordsByPatientId(this.patientid)
+      .subscribe((response) => {
+        this.previousVisitData = response;
+        console.log('aaaaaa', this.previousVisitData.visitId);
+        sessionStorage.setItem('visitId', this.previousVisitData.visitId);
+        console.log(
+          'previous visit details by patient id ',
+          this.previousVisitData
+        );
+      });
+  }
+
+  testData: any;
+  getPreviousTestData() {
+    this.visitId = sessionStorage.getItem('visitId');
+    this.service.getPrevTests(this.visitId).subscribe((response) => {
+      this.testData = response;
+      console.log('this is prvious visit test data ', this.testData);
+    });
+  }
   // myvisitId: any;
   // getPrevioushealthrecordsBypatientIdData: any;
   // getPrevioushealthrecordsBypatientId() {

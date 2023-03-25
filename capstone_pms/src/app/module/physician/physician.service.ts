@@ -56,9 +56,10 @@ export class PhysicianService {
     );
   }
 
-  getPrevioushealthrecordsBypatientId(patientId: any) {
+  // prvious visit record detials by patient id
+  getPreviousVisistRecordsByPatientId(patientId: any) {
     return this.http.get(
-      `http://localhost:8082/patient/Previous-health-records/${patientId}`
+      `http://localhost:8082/patient/Previous-visitDetails-records/${patientId}`
     );
   }
 
