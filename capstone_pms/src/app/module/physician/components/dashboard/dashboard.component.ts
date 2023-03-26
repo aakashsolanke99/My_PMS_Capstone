@@ -40,12 +40,30 @@ export class DashboardComponent implements OnInit {
   }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  todayDate: Date = new Date();
   currentDate: DatePipe = new DatePipe('en-us');
   dataSource: any;
   todaysAppointment: any;
   transformdate: any;
   email = 'physician1@gmail.com';
   status = 'acceptance=accepted';
+
+  formattedDate: any;
+  // currentDate1: DatePipe = new DatePipe('en-us');
+  onDateSelected(selectedDate: string) {
+    this.formattedDate = this.datepipe.transform(selectedDate, 'dd-MM-yyyy');
+    console.log(this.formattedDate);
+    this.service
+      .getTodaysAppointment(this.email, this.formattedDate, this.status)
+      .subscribe((response) => {
+        this.todaysAppointment = response;
+
+        console.log(this.transformdate);
+
+        this.dataSource = new MatTableDataSource(this.todaysAppointment);
+        this.dataSource.paginator = this.paginator;
+      });
+  }
   getTodaysAppointment() {
     var date = new Date();
     this.transformdate = this.currentDate.transform(date, 'dd-MM-YYYY');

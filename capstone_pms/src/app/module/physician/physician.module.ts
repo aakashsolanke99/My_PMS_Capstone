@@ -13,22 +13,27 @@ import { DeleteobservationComponent } from './components/deleteobservation/delet
 import { EnterprescriptionComponent } from './components/enterprescription/enterprescription.component';
 import { ViewprescriptionComponent } from './components/viewprescription/viewprescription.component';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewpetienthistoryComponent } from './components/viewpetienthistory/viewpetienthistory.component';
 import { PhysicianprofileComponent } from './components/physicianprofile/physicianprofile.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteappointmentsComponent } from './components/deleteappointments/deleteappointments.component';
 import { AcceptappointmentsComponent } from './components/acceptappointments/acceptappointments.component';
 import { ViewprescriptionhistoryComponent } from './components/viewprescriptionhistory/viewprescriptionhistory.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,8 @@ import { ViewprescriptionhistoryComponent } from './components/viewprescriptionh
     PhysicianprofileComponent,
     DeleteappointmentsComponent,
     AcceptappointmentsComponent,
-    ViewprescriptionhistoryComponent],
+    ViewprescriptionhistoryComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -60,12 +66,12 @@ import { ViewprescriptionhistoryComponent } from './components/viewprescriptionh
     MatButtonModule,
     MatTableModule,
     FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
     MatSnackBarModule,
-    MatDialogModule
-  ]
+    MatDialogModule,
+  ],
 })
-export class PhysicianModule { }
-
-
-
-
+export class PhysicianModule {}

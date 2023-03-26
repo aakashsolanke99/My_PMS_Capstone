@@ -16,7 +16,7 @@ export class DeleteobservationComponent implements OnInit {
   deletestbyiddata: any;
   delete() {
     console.log('id to be delete', this.testid);
-    this.service.deletetest(this.testid).subscribe((response) => {
+    this.service.deletetest(this.testid).subscribe((response: any) => {
       this.deletestbyiddata = response;
       console.log('deleted');
     });

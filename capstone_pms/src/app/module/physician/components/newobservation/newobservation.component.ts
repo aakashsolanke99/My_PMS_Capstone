@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PhysicianService } from 'src/app/module/physician/physician.service';
-
+import { MatDialogRef } from '@angular/material/dialog';
 export class Test {
   testId: any;
   testName: any;
@@ -15,7 +15,10 @@ export class Test {
   styleUrls: ['./newobservation.component.scss'],
 })
 export class NewobservationComponent {
-  constructor(private service: PhysicianService) {}
+  constructor(
+    private service: PhysicianService,
+    private matdialogRef: MatDialogRef<NewobservationComponent>
+  ) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -29,6 +32,7 @@ export class NewobservationComponent {
       .addObservation(this.test, this.visitId)
       .subscribe((response) => {
         console.log(this.test);
+        this.matdialogRef.close();
       });
   }
 

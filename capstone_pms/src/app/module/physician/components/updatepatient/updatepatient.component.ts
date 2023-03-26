@@ -11,6 +11,7 @@ import { NewobservationComponent } from '../newobservation/newobservation.compon
 import { DeleteobservationComponent } from '../deleteobservation/deleteobservation.component';
 import { PhysicianService } from 'src/app/module/physician/physician.service';
 import { EditobservationComponent } from '../editobservation/editobservation.component';
+import { DialogRef } from '@angular/cdk/dialog';
 
 export interface PeriodicElement {
   testId: number;
@@ -32,6 +33,10 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 })
 export class UpdatepatientComponent implements OnInit {
   ngOnInit(): void {
+    this.service.refreshNeeded.subscribe(() => {
+      this.getAllTestByVisitId();
+    });
+
     // this.getallTest();
     // this.getallPatient();
     this.getPatientbyId();

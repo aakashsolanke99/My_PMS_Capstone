@@ -7,6 +7,15 @@ $textcolor: #2d3663;
   color: $textcolor;
 }
 
+//heading style
+h4 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $borderbottomcolor;
+  span {
+    padding: 15px;
+  }
+}
+
 img {
   width: 2%;
   margin-right: 15px;
@@ -47,6 +56,15 @@ img {
 .historybtn {
   margin-top: 15px;
 }
+button {
+  // float: right;
+  margin-top: 15px;
+  background-color: #2d3663;
+  padding: 27px 20px;
+  span {
+    color: whitesmoke;
+  }
+}
 .btn {
   background-color: $textcolor;
   padding: 27px 20px;
@@ -76,7 +94,7 @@ img {
       color: green;
       margin-left: auto;
     }
-    &:hover{
+    &:hover {
       background-color: rgb(149, 228, 149);
     }
   }
@@ -86,7 +104,7 @@ img {
       color: red;
       margin-left: auto;
     }
-    &:hover{
+    &:hover {
       background-color: rgb(241, 192, 192);
     }
   }

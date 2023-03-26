@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject, tap } from 'rxjs';
 import { Prescription } from './components/enterprescription/enterprescription.component';
 import { Test } from './components/newobservation/newobservation.component';
 
@@ -8,6 +9,12 @@ import { Test } from './components/newobservation/newobservation.component';
 })
 export class PhysicianService {
   constructor(private http: HttpClient) {}
+
+  //Auto Referesh
+  private refresh = new Subject<void>();
+  get refreshNeeded() {
+    return this.refresh;
+  }
 
   //Todays accepted appointment
   getTodaysAppointment(
@@ -26,13 +33,19 @@ export class PhysicianService {
   }
 
   rejectAppointment(appointmentId: any, acceptance: string) {
-    return this.http.put(
-      'http://localhost:8081/rejectedappointments/' +
-        appointmentId +
-        '/' +
-        acceptance,
-      ''
-    );
+    return this.http
+      .put(
+        'http://localhost:8081/rejectedappointments/' +
+          appointmentId +
+          '/' +
+          acceptance,
+        ''
+      )
+      .pipe(
+        tap(() => {
+          this.refresh.next();
+        })
+      );
   }
 
   //All pending appointments
@@ -64,7 +77,11 @@ export class PhysicianService {
   }
 
   getallTest() {
-    return this.http.get('http://localhost:8082/tests');
+    return this.http.get('http://localhost:8082/tests').pipe(
+      tap(() => {
+        this.refresh.next();
+      })
+    );
   }
 
   getallPatient() {
@@ -93,12 +110,20 @@ export class PhysicianService {
 
   addObservation(test: Test, visitId: any) {
     test.visitId = visitId;
-    return this.http.post('http://localhost:8082/savetest', test);
+    return this.http.post('http://localhost:8082/savetest', test).pipe(
+      tap(() => {
+        this.refresh.next();
+      })
+    );
   }
 
   deletetest(testId: any) {
     console.log(testId);
-    return this.http.delete(`http://localhost:8082/tests/${testId}`);
+    return this.http.delete(`http://localhost:8082/tests/${testId}`).pipe(
+      tap(() => {
+        this.refresh.next();
+      })
+    );
   }
 
   getPrevTests(visitId: any) {

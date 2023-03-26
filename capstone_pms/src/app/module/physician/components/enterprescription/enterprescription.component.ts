@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PhysicianService } from 'src/app/module/physician/physician.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 export class Prescription {
   prescriptionName: any;
@@ -19,7 +20,8 @@ export class EnterprescriptionComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private service: PhysicianService,
-    private http: HttpClient
+    private http: HttpClient,
+    private matdialogRef: MatDialogRef<EnterprescriptionComponent>
   ) {}
   ngOnInit(): void {}
 
@@ -34,7 +36,9 @@ export class EnterprescriptionComponent implements OnInit {
 
       (error) => console.log(error)
     );
+    this.matdialogRef.close();
   }
+
   onSubmit() {
     console.log(this.prescription);
     this.savePrescription();
