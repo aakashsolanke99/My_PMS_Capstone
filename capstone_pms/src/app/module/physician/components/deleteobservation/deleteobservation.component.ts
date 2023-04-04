@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { PhysicianService } from '../../physician.service';
+import { PhysicianService } from './../../physician.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-deleteobservation',
   templateUrl: './deleteobservation.component.html',
   styleUrls: ['./deleteobservation.component.scss'],
 })
-export class DeleteobservationComponent implements OnInit {
+export class DeleteobservationComponent {
   constructor(private service: PhysicianService) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-  testid: any = sessionStorage.getItem('visitid');
+  testid: any = sessionStorage.getItem('testIdForDelete');
 
   deletestbyiddata: any;
   delete() {

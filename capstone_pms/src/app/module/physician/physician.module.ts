@@ -25,15 +25,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewpetienthistoryComponent } from './components/viewpetienthistory/viewpetienthistory.component';
 import { PhysicianprofileComponent } from './components/physicianprofile/physicianprofile.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DeleteappointmentsComponent } from './components/deleteappointments/deleteappointments.component';
-import { AcceptappointmentsComponent } from './components/acceptappointments/acceptappointments.component';
-import { ViewprescriptionhistoryComponent } from './components/viewprescriptionhistory/viewprescriptionhistory.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AcceptappointmentsComponent } from './components/acceptappointments/acceptappointments.component';
+import { DeleteappointmentsComponent } from './components/deleteappointments/deleteappointments.component';
+import { ViewprescriptionhistoryComponent } from './components/viewprescriptionhistory/viewprescriptionhistory.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -49,8 +50,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ViewprescriptionComponent,
     ViewpetienthistoryComponent,
     PhysicianprofileComponent,
-    DeleteappointmentsComponent,
     AcceptappointmentsComponent,
+    DeleteappointmentsComponent,
     ViewprescriptionhistoryComponent,
   ],
   imports: [
@@ -66,12 +67,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     MatTableModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatCardModule,
   ],
 })
 export class PhysicianModule {}

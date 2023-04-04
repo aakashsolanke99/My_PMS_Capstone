@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { PhysicianService } from 'src/app/module/physician/physician.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { PhysicianService } from './../../physician.service';
+import { Component } from '@angular/core';
+
 export class Test {
   testId: any;
   testName: any;
@@ -23,7 +24,7 @@ export class NewobservationComponent {
     throw new Error('Method not implemented.');
   }
   test: Test = new Test();
-  visitId = sessionStorage.getItem('visitId');
+  visitId = sessionStorage.getItem('newVisitId');
 
   saveObservation() {
     console.log(this.test);

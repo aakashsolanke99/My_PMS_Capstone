@@ -1,13 +1,14 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Component, OnInit } from '@angular/core';
-import { PhysicianService } from '../../physician.service';
+import { PhysicianService } from './../../physician.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-deleteappointments',
   templateUrl: './deleteappointments.component.html',
-  styleUrls: ['./deleteappointments.component.scss'],
+  styleUrls: ['./deleteappointments.component.scss']
 })
-export class DeleteappointmentsComponent implements OnInit {
+export class DeleteappointmentsComponent {
+
   constructor(
     private service: PhysicianService,
     private snakBar: MatSnackBar
@@ -44,4 +45,5 @@ export class DeleteappointmentsComponent implements OnInit {
 
     snakBarRef.onAction().subscribe();
   }
+
 }

@@ -43,67 +43,73 @@
       }
     }
   }
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
-    mat-toolbar {
-      background: red !important;
-    }
-  }
-  
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (max-width: 600px) {
-    .maincardclass{
-      padding: 40px 0 !important;
-      .card{
-        padding: 30px 30px 0 17px !important;
+  /* For extremely small screen devices (595px and below) */
+@media only screen and (max-width: 595px) {
+  .maincardclass {
+    padding: 45px 0;
+    .card {
+      width: 25%;
+      padding: 5px 10px;
+      img {
+        width: 60%;
       }
-      h3{
-        font-size: 19px !important;
+      h3 {
+        font-size: 17px;
       }
-      h6{
-        font-size: 15px !important;
-        width: 70% !important;
-      }
-      p{
-        font-size: 15px !important;
+      h6,
+      p {
+        font-size: 13px;
       }
     }
   }
-  
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (max-width: 768px) {
-    .maincardclass {
-      padding: 50px 0;
-      .card {
-        width: 25% !important;
-        padding: 20px 18px !important;
-        img {
-          width: 80% !important;
-        }
-        h3 {
-          font-size: 22px !important;
-        }
-        h6 {
-          font-size: 18px !important;
-        }
-        p {
-          font-size: 14px;
-        }
+}
+
+/* Small screen devices (595px and above) */
+@media only screen and (min-width: 595px) {
+  .maincardclass {
+    padding: 45px 0;
+    .card {
+      width: 25%;
+      padding: 5px 10px;
+      img {
+        width: 60%;
+      }
+      h3 {
+        font-size: 17px;
+      }
+      h6,
+      p {
+        font-size: 13px;
       }
     }
   }
-  
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-    mat-toolbar {
-      background: orange !important;
+}
+
+/* Medium screen devices (768px and above) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Big screen devices (889px and above) */
+@media only screen and (min-width: 889px) {
+}
+
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  .maincardclass {
+    padding: 100px 0;
+    .card {
+      width: 25%;
+      padding: 25px 40px;
+      img {
+        width: 80%;
+      }
+      h3 {
+        font-size: 30px;
+      }
+      h6,
+      p {
+        font-size: 20px;
+      }
     }
   }
-  
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-    mat-toolbar {
-      background: pink !important;
-    }
-  }
-  
+}

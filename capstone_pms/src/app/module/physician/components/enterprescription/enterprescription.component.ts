@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { PhysicianService } from 'src/app/module/physician/physician.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { PhysicianService } from './../../physician.service';
+import { Component } from '@angular/core';
 
 export class Prescription {
   prescriptionName: any;
@@ -16,7 +15,7 @@ export class Prescription {
   templateUrl: './enterprescription.component.html',
   styleUrls: ['./enterprescription.component.scss'],
 })
-export class EnterprescriptionComponent implements OnInit {
+export class EnterprescriptionComponent {
   constructor(
     private matDialog: MatDialog,
     private service: PhysicianService,
@@ -27,11 +26,11 @@ export class EnterprescriptionComponent implements OnInit {
 
   prescription: Prescription = new Prescription();
 
-  visitId = sessionStorage.getItem('visitId');
+  visitId = sessionStorage.getItem('newVisitId');
   savePrescription() {
     this.service.addPrescription(this.prescription, this.visitId).subscribe(
       (data) => {
-        console.log('visitID', this.visitId);
+        console.log('newVisitId', this.visitId);
       },
 
       (error) => console.log(error)

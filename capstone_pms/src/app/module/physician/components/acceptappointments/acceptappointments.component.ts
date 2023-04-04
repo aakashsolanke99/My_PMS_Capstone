@@ -1,6 +1,6 @@
+import { PhysicianService } from './../../physician.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component } from '@angular/core';
-import { PhysicianService } from '../../physician.service';
 
 @Component({
   selector: 'app-acceptappointments',
@@ -17,7 +17,7 @@ export class AcceptappointmentsComponent {
   appointmentId: any = sessionStorage.getItem('appointmentid');
   Accept() {
     this.service
-      .acceptappointment(this.appointmentId, 'accepted')
+      .acceptappointment(this.appointmentId, 'Accepted')
       .subscribe((response) => {
         this.data = response;
       });

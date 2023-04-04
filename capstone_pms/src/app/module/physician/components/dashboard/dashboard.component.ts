@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PhysicianService } from '../../physician.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 // import { PhysicianService } from 'src/app/service/physician.service';
 
 export interface PeriodicElement {
@@ -25,10 +26,10 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = [
     'appointmentId',
+    'patientId',
     'reason',
     'date',
     'acceptance',
-    'patientId',
     'action',
   ];
 
@@ -45,11 +46,11 @@ export class DashboardComponent implements OnInit {
   dataSource: any;
   todaysAppointment: any;
   transformdate: any;
-  email = 'physician1@gmail.com';
-  status = 'acceptance=accepted';
+  email: any = sessionStorage.getItem('currentUserEmail');
+  status = 'acceptance=Accepted';
 
   formattedDate: any;
-  // currentDate1: DatePipe = new DatePipe('en-us');
+  currentDate1: DatePipe = new DatePipe('en-us');
   onDateSelected(selectedDate: string) {
     this.formattedDate = this.datepipe.transform(selectedDate, 'dd-MM-yyyy');
     console.log(this.formattedDate);
@@ -64,6 +65,7 @@ export class DashboardComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
   }
+
   getTodaysAppointment() {
     var date = new Date();
     this.transformdate = this.currentDate.transform(date, 'dd-MM-YYYY');
@@ -80,16 +82,18 @@ export class DashboardComponent implements OnInit {
   }
 
   getpatientidbyclick(patientid: any, appointmentId: any) {
-    sessionStorage.setItem('setid', patientid);
+    sessionStorage.setItem('patientId', patientid);
+    console.log('this is patientid in dashboard', patientid);
     sessionStorage.setItem('appointment_Id', appointmentId);
+    console.log('this is appointmentId in dashboard', appointmentId);
   }
 
-  PatientId: any = sessionStorage.getItem('setid');
-
-  // ngAfterViewInit() {
-  //   // this.dataSource.sort = this.sort;
-  //   this.dataSource.paginator = this.paginator;
-  // }
+  PatientId: any = sessionStorage.getItem('patientId');
+  sort: any;
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
   patientdata: any;
   getallPatient() {

@@ -1,0 +1,56 @@
+$borderbottomcolor: grey;
+.example-card {
+  max-width: 100%;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+.mat-elevation-z8 {
+  width: 100%;
+  margin-top: 15px;
+  .table-row:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+}
+table {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.classParent {
+  display: flex;
+}
+.parent1 {
+  display: flex;
+  .child1 {
+    width: 40%;
+  }
+  .child2 {
+    width: 60%;
+    .child21 {
+      float: right;
+      margin-right: 15px;
+    }
+  }
+}
+
+.submit {
+  //float: right;
+  //margin-top: 15px;
+  background-color: #0d4c92;
+  padding: 15px 20px;
+  color: whitesmoke;
+  &:hover {
+    background-color: #659fe1;
+    color: black;
+  }
+}
+
+.mat-elevation-z8 {
+  .thead {
+    background: #cff5e7;
+  }
+  .table-row:hover {
+    background: #cff5e7;
+  }
+}

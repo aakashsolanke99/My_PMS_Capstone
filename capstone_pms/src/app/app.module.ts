@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +16,10 @@ import { HerosectionComponent } from './components/content/herosection/herosecti
 import { BelowherocardComponent } from './components/content/belowherocard/belowherocard.component';
 import { DoctorcardComponent } from './components/content/doctorcard/doctorcard.component';
 import { AssoicatecardComponent } from './components/content/assoicatecard/assoicatecard.component';
-import { HttpClientModule } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { DatePipe, CommonModule } from '@angular/common';
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+import { AfterauthComponent } from './components/afterauth/afterauth.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,10 @@ import { DatePipe } from '@angular/common';
     BelowherocardComponent,
     DoctorcardComponent,
     AssoicatecardComponent,
+    AfterauthComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -40,8 +44,29 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     MatMenuModule,
     MatButtonModule,
+    AuthModule.forRoot({
+      domain: 'dev-qnzlgih035ihuldo.us.auth0.com',
+      clientId: 'eucj2gD7k3QWF1B5zTC3w1PJMeQ3j1bM',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
   ],
-  providers: [HttpClientModule, DatePipe],
+  //datepipe-sangeeta
+  providers: [
+    DatePipe,
+    HttpClientModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
+    {
+      provide: Window,
+      useValue: window,
+    },
+  ],
   bootstrap: [AppComponent],
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

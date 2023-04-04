@@ -18,7 +18,7 @@
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <button mat-menu-item (click)="logout()">
                   <mat-icon class="box-item" matTooltip="Logout">logout</mat-icon>
                   <span>Logout</span>
                 </button>
